@@ -1,0 +1,20 @@
+﻿@model ETB310_TennantWebsite.Models.ServiceCaseViewModel
+@{
+    ViewBag.Title = "CreateServiceCase";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm("CreateServiceCase", "Home", FormMethod.Post))
+{
+    <div>namn </div>
+    <div>@Html.TextBoxFor(vm => vm.Name)</div>
+
+    <div>lägenhetsnummer </div>
+    <div>@Html.ValidationMessageFor(vm => vm.FlatNr)</div>
+    <div>@Html.TextBoxFor(vm => vm.FlatNr)</div>
+
+    <div>ärendebeskrivning </div>
+    <div>@Html.TextBoxFor(vm => vm.NewPostMessage)</div>
+    <input type="submit" value="skicka" class="" />
+}
