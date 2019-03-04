@@ -16,12 +16,11 @@ namespace ETB310_TennantWebsite.Models
         public string Name { get; set; } // optional 
 
         [Required(ErrorMessage = "Du måste skriva en emailadres.")]
-        //ett @ måste finas och minst en .
-        public string ContactEmail { get; set; } // obligatory 
+        public string ContactEmail { get; set; } // required 
 
         public List<ServiceCasePostViewModel> Posts { get; set; }
 
-        [Required(ErrorMessage = "Du måste skriva vad felet på lägenheten är.")]
-        public string NewPostMessage { get; set; } // obligatory 
+        [Required(ErrorMessage = "Du måste beskriva ditt ärende.")]
+        public string NewPostMessage { get; set; } // required 
     }
 }
