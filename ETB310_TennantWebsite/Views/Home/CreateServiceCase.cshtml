@@ -15,6 +15,7 @@
     <div>@Html.TextBoxFor(vm => vm.FlatNr)</div>
 
     <div>ärendebeskrivning </div>
+    <div>@Html.ValidationMessageFor(vm => vm.NewPostMessage)</div>
     <div>@Html.TextBoxFor(vm => vm.NewPostMessage)</div>
     <input type="submit" value="skicka" class="" />
 }

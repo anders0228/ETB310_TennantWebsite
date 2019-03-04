@@ -15,9 +15,12 @@ namespace ETB310_TennantWebsite.Models
 
         public string Name { get; set; } // optional 
 
-        public string ContactEmail { get; set; } // obligatory 
+        [Required(ErrorMessage = "Du måste skriva en emailadres.")]
+        public string ContactEmail { get; set; } // required 
 
         public List<ServiceCasePostViewModel> Posts { get; set; }
-        public string NewPostMessage { get; set; }
+
+        [Required(ErrorMessage = "Du måste beskriva ditt ärende.")]
+        public string NewPostMessage { get; set; } // required 
     }
 }
