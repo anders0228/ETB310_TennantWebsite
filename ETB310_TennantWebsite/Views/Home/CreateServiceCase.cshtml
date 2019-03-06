@@ -2,21 +2,31 @@
 @{
     ViewBag.Title = "CreateServiceCase";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h2>Anmäl ett fel</h2>
 
 @using (Html.BeginForm("CreateServiceCase", "Home", FormMethod.Post))
 {
-    <div>namn </div>
-    <div>@Html.ValidationMessageFor(vm => vm.Name)</div>
-    <div>@Html.TextBoxFor(vm => vm.Name)</div>
+    <div class="row">
+        <div class="col-md-12 alert-danger site-alert">
+            @Html.ValidationMessageFor(vm => vm.Name)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">namn </div>
+        <div class="col-md-3 ">@Html.TextBoxFor(vm => vm.Name, new { @class = "form-control" })</div>
+    </div>
 
-    <div>lägenhetsnummer </div>
-    <div>@Html.ValidationMessageFor(vm => vm.FlatNr)</div>
-    <div>@Html.TextBoxFor(vm => vm.FlatNr)</div>
-
+    <div class="row">
+        <div class="col-md-12 alert-danger site-alert">@Html.ValidationMessageFor(vm => vm.FlatNr)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">lägenhetsnummer </div>
+        <div class="col-md-3">@Html.TextBoxFor(vm => vm.FlatNr, new { @class = "form-control" })</div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 alert-danger  site-alert">@Html.ValidationMessageFor(vm => vm.NewPostMessage)</div>
+    </div>
     <div>ärendebeskrivning </div>
-    <div>@Html.ValidationMessageFor(vm => vm.NewPostMessage)</div>
-    <div>@Html.TextBoxFor(vm => vm.NewPostMessage)</div>
+    <div>@Html.TextAreaFor(vm => vm.NewPostMessage, 10, 80, new { @class = "form-control" })</div>
     <input type="submit" value="skicka" class="" />
 }

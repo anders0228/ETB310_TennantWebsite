@@ -1,24 +1,132 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿/*==================================================================================
+   Navbar
+  ==================================================================================*/
+
+.navbar-default {
+    background-color: #8a92f2;
+    border-color: #64689d;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    .navbar-default .navbar-brand {
+        color: #000000;
+    }
+
+        .navbar-default .navbar-brand:hover,
+        .navbar-default .navbar-brand:focus {
+            color: #d9dbf7;
+        }
+
+    .navbar-default .navbar-text {
+        color: #000000;
+    }
+
+    .navbar-default .navbar-nav > li > a {
+        color: #000000;
+    }
+
+        .navbar-default .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus {
+            color: #d9dbf7;
+        }
+
+    .navbar-default .navbar-nav > li > .dropdown-menu {
+        background-color: #8a92f2;
+    }
+
+        .navbar-default .navbar-nav > li > .dropdown-menu > li > a {
+            color: #000000;
+        }
+
+            .navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
+            .navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
+                color: #d9dbf7;
+                background-color: #64689d;
+            }
+
+        .navbar-default .navbar-nav > li > .dropdown-menu > li.divider {
+            background-color: #64689d;
+        }
+
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #d9dbf7;
+        background-color: #64689d;
+    }
+
+    .navbar-default .navbar-nav > .active > a,
+    .navbar-default .navbar-nav > .active > a:hover,
+    .navbar-default .navbar-nav > .active > a:focus {
+        color: #d9dbf7;
+        background-color: #64689d;
+    }
+
+    .navbar-default .navbar-nav > .open > a,
+    .navbar-default .navbar-nav > .open > a:hover,
+    .navbar-default .navbar-nav > .open > a:focus {
+        color: #d9dbf7;
+        background-color: #64689d;
+    }
+
+    .navbar-default .navbar-toggle {
+        border-color: #64689d;
+    }
+
+        .navbar-default .navbar-toggle:hover,
+        .navbar-default .navbar-toggle:focus {
+            background-color: #64689d;
+        }
+
+        .navbar-default .navbar-toggle .icon-bar {
+            background-color: #000000;
+        }
+
+    .navbar-default .navbar-collapse,
+    .navbar-default .navbar-form {
+        border-color: #000000;
+    }
+
+    .navbar-default .navbar-link {
+        color: #000000;
+    }
+
+        .navbar-default .navbar-link:hover {
+            color: #d9dbf7;
+        }
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #000000;
+    }
+
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+            color: #d9dbf7;
+        }
+
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #d9dbf7;
+        background-color: #64689d;
+    }
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+
+/*==================================================================================
+   Egna layouter
+  ==================================================================================*/
+.thbab-logo {
+    height: 100px;
+    margin: 10px;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.menu-spacer {
+    height: 131px;
+}
+
+.site-alert {
+    min-height: 0;
+    margin-top: 7px;
+    margin-bottom: 2px;
 }
