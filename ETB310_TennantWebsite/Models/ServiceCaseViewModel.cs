@@ -13,14 +13,17 @@ namespace ETB310_TennantWebsite.Models
         [RegularExpression(@"^\d{4}",ErrorMessage ="lägenhetsnumret måste var fyra siffror")]
         public string FlatNr { get; set; } // optional 
 
+        [StringLength(30,ErrorMessage ="Namn måste vara minst 2 tecken och inte längre än 30 tecken", MinimumLength =2)]
         public string Name { get; set; } // optional 
 
         [Required(ErrorMessage = "Du måste skriva en emailadres.")]
+        [StringLength(40,ErrorMessage ="Epostadressen måste vara minst 6 tecken och inte längre än 40 tecken.", MinimumLength =6)]
         public string ContactEmail { get; set; } // required 
 
-        public List<ServiceCasePostViewModel> Posts { get; set; }
-
         [Required(ErrorMessage = "Du måste beskriva ditt ärende.")]
+        [StringLength(2000,ErrorMessage ="Beskrivningen får inte vara längre än 2000 tecken.")]
         public string NewPostMessage { get; set; } // required 
+
+        public List<ServiceCasePostViewModel> Posts { get; set; }
     }
 }
