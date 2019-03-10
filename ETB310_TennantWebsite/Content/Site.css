@@ -118,7 +118,7 @@
   ==================================================================================*/
 .menu-logo {
     height: 40px;
-    margin: 3px;
+    margin: 8px;
 }
 
 .menu-main-item {
@@ -126,7 +126,7 @@
 }
 
 .menu-spacer {
-    height: 140px;
+    height: 60px;
 }
 
 
