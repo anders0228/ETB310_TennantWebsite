@@ -1,4 +1,5 @@
-﻿using ETB310_TennantWebsite.Models;
+﻿using ETB310_TennantWebsite.MailKit;
+using ETB310_TennantWebsite.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -52,7 +53,7 @@ namespace ETB310_TennantWebsite.Controllers
                 serviceCase.Posts = new ServiceReference1.ServiceCasePost[1] { service.AddPost(serviceCase.CaseNr, post) };
 
                 // Konrollera att registreringen gick bra
-                ValidateEqual(vm.Name, serviceCase.Name + "#", errorLog);
+                ValidateEqual(vm.Name, serviceCase.Name, errorLog);
                 ValidateEqual(vm.FlatNr, serviceCase.FlatNr.ToString(), errorLog);
                 ValidateEqual(vm.ContactEmail, serviceCase.ContactEmail, errorLog);
                 ValidateEqual(vm.NewPostMessage, serviceCase.Posts?[0].Message ?? "", errorLog);
@@ -61,6 +62,7 @@ namespace ETB310_TennantWebsite.Controllers
             {
                 // Ifall webbservicen inte hittades e.d.
                 errorLog.Add(new ErrorLogItem("CommunicationException", ex.Message));
+                // TODO: Mejla alla uppkomna fel till en admin-webbadress
                 Debug.WriteLine("ERROR: " + ex.Message);
             }
 
@@ -97,6 +99,7 @@ namespace ETB310_TennantWebsite.Controllers
                 ContactEmail = vm.ContactEmail,
                 Message = vm.NewPostMessage,
             };
+            SendMailSimple.SendServiceCase(vmResult);
             return View("EmailRegistrationConfirmation", vmResult);
         }
 
