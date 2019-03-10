@@ -1,0 +1,11 @@
+﻿@model ETB310_TennantWebsite.Models.RegistrationConfirmationViewModel
+@{
+    ViewBag.Title = "Confirmation";
+}
+<h2>Tack för din registrering!</h2>
+<p>Ditt ärende har nu skickats som e-post</p>
+
+@{
+    Html.RenderPartial("_displayServiceCase", Model);
+}
+<p>Vänliga hälsningar THN-AB.</p>

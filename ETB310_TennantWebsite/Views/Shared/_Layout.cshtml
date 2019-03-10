@@ -11,20 +11,20 @@
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
+                </button>*@
                 <a href="@Url.Action("Index", "Home", null)">
-                    <img class="thbab-logo" src="/Content/images/ThbAbLogo.png" alt="THB-AB logo"/></a>
+                    <img class="menu-logo" src="/Content/images/ThbAbLogo.png" alt="THB-AB logo"/></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Välkommen", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Om THB-AB", "About", "Home")</li>
-                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Anmäl ett fel", "CreateServiceCase", "Home")</li>
+                    <li class="menu-main-item">@Html.ActionLink("Välkommen", "Index", "Home")</li>
+                    <li class="menu-main-item">@Html.ActionLink("Om THB-AB", "About", "Home")</li>
+                    <li class="menu-main-item">@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                    <li class="menu-main-item">@Html.ActionLink("Anmäl ett serviceärende", "Index", "ServiceCase")</li>
                 </ul>
             </div>
         </div>

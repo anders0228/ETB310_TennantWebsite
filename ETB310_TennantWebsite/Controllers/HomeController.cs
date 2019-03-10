@@ -13,16 +13,7 @@ namespace ETB310_TennantWebsite.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult CreateServiceCase(ServiceCaseViewModel vm)
-        {
-            return View(vm);
-        }
-        public ActionResult CreateServiceCase()
-        {
-            var vm = new ServiceCaseViewModel();
-            return View(vm);
-        }
+
 
         public ActionResult About()
         {

@@ -1,10 +1,11 @@
 ﻿@model ETB310_TennantWebsite.Models.ServiceCaseViewModel
 @{
-    ViewBag.Title = "CreateServiceCase";
+                ViewBag.Title = "RegisterServiceCase";
 }
-<h2>Anmäl ett fel</h2>
 
-@using (Html.BeginForm("CreateServiceCase", "Home", FormMethod.Post))
+<h2>Anmäl ett serviceärende</h2>
+
+@using (Html.BeginForm("RegisterServiceCase", "ServiceCase", FormMethod.Post))
 {
     <div class="row">
         <div class="col-md-12 alert-danger site-alert">
@@ -12,7 +13,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2">namn </div>
+        <div class="col-md-2">Namn: </div>
         <div class="col-md-3 ">@Html.TextBoxFor(vm => vm.Name, new { @class = "form-control" })</div>
     </div>
 
@@ -20,9 +21,19 @@
         <div class="col-md-12 alert-danger site-alert">@Html.ValidationMessageFor(vm => vm.FlatNr)</div>
     </div>
     <div class="row">
-        <div class="col-md-2">lägenhetsnummer </div>
+        <div class="col-md-2">lägenhetsnummer: </div>
         <div class="col-md-3">@Html.TextBoxFor(vm => vm.FlatNr, new { @class = "form-control" })</div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12 alert-danger site-alert">@Html.ValidationMessageFor(vm => vm.ContactEmail)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">E-postadress: </div>
+        <div class="col-md-3">@Html.TextBoxFor(vm => vm.ContactEmail, new { @class = "form-control" })</div>
+    </div>
+
+
     <div class="row">
         <div class="col-md-12 alert-danger  site-alert">@Html.ValidationMessageFor(vm => vm.NewPostMessage)</div>
     </div>

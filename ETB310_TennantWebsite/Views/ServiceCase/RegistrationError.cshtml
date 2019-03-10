@@ -1,0 +1,53 @@
+﻿@model ETB310_TennantWebsite.Models.ServiceCaseViewModel
+@{
+    ViewBag.Title = "Confirmation";
+}
+<h2>Tyvärr, något gick fel...</h2>
+<p>
+    Tyvärr, något gick fel vid registreringen och ett ärende kunde inte skapas.<br />
+    Om du vill kan vi försöka skicka in ditt ärende igen.<br />
+    Vi kan också mejla in ditt ärende åt dig, så lägger vi sen in det i systemet manuellt.
+</p>
+
+<div class="clearfix">
+    <div>
+        <div class="side-by-side ">
+            @using (Html.BeginForm("RegisterServiceCase", "ServiceCase", FormMethod.Post))
+            {
+                @Html.HiddenFor(vm => vm.Name, new { @class = "form-control" })
+                @Html.HiddenFor(vm => vm.ContactEmail, new { @class = "form-control" })
+                @Html.HiddenFor(vm => vm.FlatNr, new { @class = "form-control" })
+                @Html.HiddenFor(vm => vm.NewPostMessage, new { @class = "form-control" })
+                @Html.HiddenFor(vm => vm.TryCount)
+                <input type="submit" value="Försök igen" class="btn btn-default" />
+            }
+        </div>
+        @if (Model.TryCount > 1)
+        {
+            <div class="btn-extra-info">
+                försök @Model.TryCount
+            </div>
+        }
+        <div class="btn-default clearfix space-under"></div>
+        @using (Html.BeginForm("EmailRegisterServiceCase", "ServiceCase", FormMethod.Post))
+        {
+            @Html.HiddenFor(vm => vm.Name, new { @class = "form-control" })
+            @Html.HiddenFor(vm => vm.ContactEmail, new { @class = "form-control" })
+            @Html.HiddenFor(vm => vm.FlatNr, new { @class = "form-control" })
+            @Html.HiddenFor(vm => vm.NewPostMessage, new { @class = "form-control" })
+            <input type="submit" value="Skicka ärendet som E-post" class="btn btn-default" />
+        }
+
+    </div>
+</div>
+
+
+<hr />
+<p>Ditt ärende ser ut som följer:</p>
+    Namn: @Model.Name<br />
+    E-post: @Model.ContactEmail<br />
+    Lägenhetsnummer: @Model.FlatNr<br />
+    Meddelande: @Model.NewPostMessage<br />
+    <hr />
+
+    <p>Vänliga hälsningar THN-AB.</p>
