@@ -18,7 +18,7 @@ namespace ETB310_TennantWebsite.Models
         public string Name { get; set; } // optional 
 
         [Required(ErrorMessage = "Du måste skriva en emailadres.")]
-        [StringLength(40,ErrorMessage ="Epostadressen måste vara minst 6 tecken och inte längre än 40 tecken.", MinimumLength =6)]
+        [StringLength(40, ErrorMessage = "Epostadressen måste vara minst 6 tecken och inte längre än 40 tecken.", MinimumLength = 6)]
         public string ContactEmail { get; set; } // required 
 
         [Required(ErrorMessage = "Du måste beskriva ditt ärende.")]
@@ -26,5 +26,6 @@ namespace ETB310_TennantWebsite.Models
         public string NewPostMessage { get; set; } // required 
 
         public List<ServiceCasePostViewModel> Posts { get; set; }
+        public int TryCount { get; set; }
     }
 }
