@@ -229,6 +229,7 @@
     <Content Include="Views\ServiceCase\RegistrationConfirmation.cshtml" />
     <Content Include="Views\ServiceCase\EmailRegistrationConfirmation.cshtml" />
     <Content Include="Views\ServiceCase\_displayServiceCase.cshtml" />
+    <Content Include="Views\ServiceCase\VerifyEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
