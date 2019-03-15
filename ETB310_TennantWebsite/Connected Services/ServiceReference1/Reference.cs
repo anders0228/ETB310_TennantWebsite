@@ -15,7 +15,7 @@ namespace ETB310_TennantWebsite.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceCase", Namespace="http://schemas.datacontract.org/2004/07/WcfBackEndv2")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceCase", Namespace="http://schemas.datacontract.org/2004/07/WcfBackEndv2.Model")]
     [System.SerializableAttribute()]
     public partial class ServiceCase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -30,6 +30,9 @@ namespace ETB310_TennantWebsite.ServiceReference1 {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] ErrorsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int FlatNrField;
@@ -90,6 +93,19 @@ namespace ETB310_TennantWebsite.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Errors {
+            get {
+                return this.ErrorsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorsField, value) != true)) {
+                    this.ErrorsField = value;
+                    this.RaisePropertyChanged("Errors");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int FlatNr {
             get {
                 return this.FlatNrField;
@@ -140,7 +156,7 @@ namespace ETB310_TennantWebsite.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceCasePost", Namespace="http://schemas.datacontract.org/2004/07/WcfBackEndv2")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceCasePost", Namespace="http://schemas.datacontract.org/2004/07/WcfBackEndv2.Model")]
     [System.SerializableAttribute()]
     public partial class ServiceCasePost : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -148,10 +164,22 @@ namespace ETB310_TennantWebsite.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
+        private string ContactEmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] ErrorsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool PrivateField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -164,14 +192,40 @@ namespace ETB310_TennantWebsite.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
+        public string ContactEmail {
             get {
-                return this.IdField;
+                return this.ContactEmailField;
             }
             set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
+                if ((object.ReferenceEquals(this.ContactEmailField, value) != true)) {
+                    this.ContactEmailField = value;
+                    this.RaisePropertyChanged("ContactEmail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((this.DateField.Equals(value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Errors {
+            get {
+                return this.ErrorsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorsField, value) != true)) {
+                    this.ErrorsField = value;
+                    this.RaisePropertyChanged("Errors");
                 }
             }
         }
@@ -185,6 +239,32 @@ namespace ETB310_TennantWebsite.ServiceReference1 {
                 if ((object.ReferenceEquals(this.MessageField, value) != true)) {
                     this.MessageField = value;
                     this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Private {
+            get {
+                return this.PrivateField;
+            }
+            set {
+                if ((this.PrivateField.Equals(value) != true)) {
+                    this.PrivateField = value;
+                    this.RaisePropertyChanged("Private");
                 }
             }
         }
