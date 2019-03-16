@@ -2,6 +2,7 @@
 using ETB310_TennantWebsite.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.ServiceModel;
@@ -21,7 +22,7 @@ namespace ETB310_TennantWebsite.Controllers
         [HttpPost]
         public ActionResult RegisterServiceCase(ServiceCaseViewModel vm)
         {
-            // Kolla att all inmatning är ok och returnera formuläret om nåt är fel
+            // Kolla att alla inmatade fält är ok och returnera formuläret om nåt är fel
             if (!ModelState.IsValid)
             {
                 return View(vm);
@@ -77,6 +78,7 @@ namespace ETB310_TennantWebsite.Controllers
                     ContactEmail = serviceCase?.ContactEmail ?? "".ToString(),
                     Message = serviceCase.Posts[0].Message,
                 };
+                SendMailSimple.SendRegistrationConfirmation(vmResult);
                 return View("RegistrationConfirmation", vmResult);
             }
 
@@ -99,7 +101,7 @@ namespace ETB310_TennantWebsite.Controllers
                 ContactEmail = vm.ContactEmail,
                 Message = vm.NewPostMessage,
             };
-            SendMailSimple.SendServiceCase(vmResult);
+            SendMailSimple.RegisterServiceCase(vmResult);
             return View("EmailRegistrationConfirmation", vmResult);
         }
 
