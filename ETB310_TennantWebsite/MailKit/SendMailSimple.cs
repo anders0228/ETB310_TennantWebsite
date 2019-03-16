@@ -11,15 +11,25 @@ namespace ETB310_TennantWebsite.MailKit
 {
     /// <summary>
     /// SendMailSimple använder sig av MailKit och ett Googlekonto med sänkt säkerhet. 
-    /// installera MailKit med Nuget package manager. skriv: 
-    ///     Install-Package MailKit
-    /// 
     /// I stället för Oath2 så räcker det här med användarnamn och lösenord
     /// I Googlekontot du använder så måste du först godkänna anslutning med sänkt säkerhet. 
     /// Gå till https://www.google.com/settings/security/lesssecureapps & välj "Turn On"
+    ///
+    /// installera MailKit med Nuget package manager. skriv: 
+    ///     Install-Package MailKit
     /// </summary>
     public class SendMailSimple
     {
+        public static void SendServiceCase(RegistrationConfirmationViewModel serviceCase)
+        {
+            var subject = "Serviceärende från webbplatsen";
+            var messageText = $"namn: {serviceCase.Name}\nlägenhetsnummer: {serviceCase.FlatNr}\n"
+                    + $"E-Post: {serviceCase.ContactEmail}\n\n"
+                    + $"Meddelande:\n{serviceCase.Message}";
+            var reciever = ConfigurationManager.ConnectionStrings["CaseRegisteringEmailAdress"].ConnectionString;
+            SendMessage(messageText, subject, serviceCase.Name, reciever);
+        }
+
         public static void SendRegistrationConfirmation(RegistrationConfirmationViewModel serviceCase)
         {
             var subject = $"Ett seviceärende med ID [{serviceCase.CaseNr}] är skapat";

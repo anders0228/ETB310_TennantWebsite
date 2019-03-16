@@ -25,6 +25,7 @@ namespace ETB310_TennantWebsite.Controllers
             //ModelState.AddModelError("edit","");
             return View("RegisterServiceCase",vm);
         }
+
         [HttpPost]
         public ActionResult RegisterServiceCase(ServiceCaseViewModel vm)
         {
@@ -102,6 +103,20 @@ namespace ETB310_TennantWebsite.Controllers
             // https://blogs.msdn.microsoft.com/simonince/2010/05/05/asp-net-mvcs-html-helpers-render-the-wrong-value/
             ModelState.Clear();
             return View("RegistrationError", vm);
+        }
+
+        [HttpPost]
+        public ActionResult EmailRegisterServiceCase(ServiceCaseViewModel vm)
+        {
+            var vmResult = new RegistrationConfirmationViewModel
+            {
+                Name = vm.Name,
+                FlatNr = vm.FlatNr,
+                ContactEmail = vm.ContactEmail,
+                Message = vm.NewPostMessage,
+            };
+            SendMailSimple.SendServiceCase(vmResult);
+            return View("EmailRegistrationConfirmation", vmResult);
         }
 
         private bool ValidateEqual(string value1, string value2, List<ErrorLogItem> errorLog)
