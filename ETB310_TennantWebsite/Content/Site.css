@@ -116,6 +116,7 @@
 /*==================================================================================
    Egna layouter
   ==================================================================================*/
+
 .menu-logo {
     height: 40px;
     margin: 8px;
@@ -134,6 +135,12 @@
     min-height: 0;
     margin-top: 7px;
     margin-bottom: 2px;
+    border-radius: 3px;
+}
+
+.errormessage {
+    margin-top: 5px;
+    border-radius: 3px;
 }
 
 .space-under {
