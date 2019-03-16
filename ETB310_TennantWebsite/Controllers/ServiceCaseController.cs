@@ -20,6 +20,12 @@ namespace ETB310_TennantWebsite.Controllers
         }
 
         [HttpPost]
+        public ActionResult EditServiceCase(ServiceCaseViewModel vm)
+        {
+            //ModelState.AddModelError("edit","");
+            return View("RegisterServiceCase",vm);
+        }
+        [HttpPost]
         public ActionResult RegisterServiceCase(ServiceCaseViewModel vm)
         {
             // Kolla att alla inmatade fält är ok och returnera formuläret om nåt är fel
@@ -29,12 +35,13 @@ namespace ETB310_TennantWebsite.Controllers
             }
 
             // Mappa data från viewmodel till webbservicens klasser 
-            //  - Skapa en post
             var post = new ServiceReference1.ServiceCasePost()
             {
                 Message = vm.NewPostMessage,
+                Name = vm.Name,
+                ContactEmail = vm.ContactEmail
             };
-            //  - skapa ett ServiceCase och lägg till meddelandetexten som ett inlägg
+            //  skapa ett ServiceCase
             Int32.TryParse(vm.FlatNr, out int flatNr);
             var serviceCase = new ServiceReference1.ServiceCase
             {
@@ -48,10 +55,13 @@ namespace ETB310_TennantWebsite.Controllers
 
             try
             {
-                // Anslut till webbservicen och registrera ärendet
+                // Anslut till webbservicen, lägg till meddelandetexten som ett inlägg och registrera ärendet
                 var service = new ServiceReference1.Service1Client();
                 serviceCase = service.CreateCase(serviceCase);
-                serviceCase.Posts = new ServiceReference1.ServiceCasePost[1] { service.AddPost(serviceCase.CaseNr, post) };
+                serviceCase.Posts = new ServiceReference1.ServiceCasePost[1] 
+                {
+                    service.AddPost(serviceCase.CaseNr, post)
+                };
 
                 // Konrollera att registreringen gick bra
                 ValidateEqual(vm.Name, serviceCase.Name, errorLog);
@@ -67,7 +77,10 @@ namespace ETB310_TennantWebsite.Controllers
                 Debug.WriteLine("ERROR: " + ex.Message);
             }
 
-            if (errorLog.Count == 0)
+            //Kolla att det inte blev några fel
+            if (errorLog.Count() == 0 
+                && (serviceCase.Errors == null || serviceCase.Errors.Count() == 0)
+                && (serviceCase.Posts.LastOrDefault().Errors == null || serviceCase.Posts.LastOrDefault().Errors.Count()==0))
             {
                 // Mappa till resultat-vymodellen
                 var vmResult = new RegistrationConfirmationViewModel
@@ -78,7 +91,7 @@ namespace ETB310_TennantWebsite.Controllers
                     ContactEmail = serviceCase?.ContactEmail ?? "".ToString(),
                     Message = serviceCase.Posts[0].Message,
                 };
-                SendMailSimple.SendRegistrationConfirmation(vmResult);
+                //SendMailSimple.SendRegistrationConfirmation(vmResult);
                 return View("RegistrationConfirmation", vmResult);
             }
 
@@ -89,20 +102,6 @@ namespace ETB310_TennantWebsite.Controllers
             // https://blogs.msdn.microsoft.com/simonince/2010/05/05/asp-net-mvcs-html-helpers-render-the-wrong-value/
             ModelState.Clear();
             return View("RegistrationError", vm);
-        }
-
-        [HttpPost]
-        public ActionResult EmailRegisterServiceCase(ServiceCaseViewModel vm)
-        {
-            var vmResult = new RegistrationConfirmationViewModel
-            {
-                Name = vm.Name,
-                FlatNr = vm.FlatNr,
-                ContactEmail = vm.ContactEmail,
-                Message = vm.NewPostMessage,
-            };
-            SendMailSimple.RegisterServiceCase(vmResult);
-            return View("EmailRegistrationConfirmation", vmResult);
         }
 
         private bool ValidateEqual(string value1, string value2, List<ErrorLogItem> errorLog)
